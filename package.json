@@ -23,7 +23,8 @@
     "next-optimized-images": "^2.6.2",
     "node-fetch": "^3.2.10",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "sharp": "^0.31.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
