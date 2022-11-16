@@ -1,0 +1,123 @@
+import { useState, useEffect, use } from 'react'
+import { useSession, signIn } from "next-auth/react"
+
+import ShowVerseOfTheDay from "../components/ShowVerseOfTheDay"
+import PapercutWidget from "../components/PapercutWidget"
+import { LinkButtonBlue, LinkButtonGreen, LinkButtonOrange, LinkButtonPurple } from "../components/LinkButton"
+
+export default function Home() {
+
+  const { data: session } = useSession()
+  const [id, setId] = useState("")
+
+  const [ql, setQL] = useState([]) //Quick Links
+  const [pd, setPD] = useState([]) //Professional Development
+  const [ss, setSS] = useState([]) //Support Sites
+  const [yl, setYl] = useState([]) //Your Links
+
+  useEffect(() => {
+
+    if (session) {
+      setId(session.user.email.split('@')[0].toUpperCase())
+
+      fetch('https://hcs-intranet.jtek.lol/api/bookmarks')
+      .then(res => res.json())
+      .then(data => {
+
+        let temp = data.data.map(d => ({attributes: {category: d.attributes.category, id: d.id, title: d.attributes.title, url: d.attributes.url }}))
+
+        let ql1 = temp.filter(bm => bm.attributes.category === "QuickLinks")
+        let pd1 = temp.filter(bm => bm.attributes.category === "ProfessionalDevelopment")
+        let ss1 = temp.filter(bm => bm.attributes.category === "SupportLinks")
+        let yl1 = temp.filter(bm => bm.attributes.category === "YourLinks")
+
+        fetch('https://hcs-intranet.jtek.lol/api/staff-users?populate=Links&fields[0]=email&filters[email][$eq]=jk@hcs.kiwi')
+        .then(res => res.json())
+        .then(data => {
+  
+          let base = data.data[0]
+        
+          let temp = base.attributes.Links.map(b => ({attributes: {category: b.category, id: b.id, title: b.title, url: b.url}}))
+
+          setQL(ql1.concat(temp.filter(bm => bm.attributes.category === "QuickLinks")))
+          setPD(pd1.concat(temp.filter(bm => bm.attributes.category === "ProfessionalDevelopment")))
+          setSS(ss1.concat(temp.filter(bm => bm.attributes.category === "SupportLinks")))
+          setYl(yl1.concat(temp.filter(bm => bm.attributes.category === "YourLinks")))
+        })
+
+      })
+
+    }
+
+  }, [session, id])
+
+  if (session) {
+    return (
+      <div className="h-screen p-4 dark:bg-white dark:text-black">
+        
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-3/4">
+
+            <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Hello ${session.user.name}`}</h1>
+
+            <ShowVerseOfTheDay />
+
+            <PapercutWidget id={id} />
+
+            <div className="border-4 border-sky-900 rounded-2xl p-4 w-full">
+              <h2 className="text-xl">{"Your Tickets:"}</h2>
+              <p className="text-lg font-bold">{""}</p>
+              <p className="text-lg font-bold">{""}</p>
+            </div>
+
+            {yl.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Your Links`}</h1> : null}
+
+            {yl.map(bm => {
+              return (
+                <LinkButtonPurple key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
+              )
+            })}
+
+            {ql.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Quick Links`}</h1> : null}
+
+            {ql.map(bm => {
+
+              return (
+                <LinkButtonBlue key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
+              )
+            })}
+
+            {pd.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Professional Development`}</h1> : null}
+
+            {pd.map(bm => {
+              return (
+                <LinkButtonGreen key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
+              )
+            })}
+
+            {ss.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Support Sites`}</h1> : null} 
+
+            {ss.map(bm => {
+              return (
+                <LinkButtonOrange key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
+              )
+            })}
+
+          </div>
+
+      </div>
+    )
+  } else {
+    return (
+      <div className="h-screen p-4 dark:bg-white dark:text-black">
+        <h2 className="text-2xl">You have reached the HCS Staff Intranet Site</h2>
+
+        <p className="mb-4">You will need to sign in with your school google account to see your content.</p>
+
+        <button className="bg-slate-400 p-4 text-white w-64 rounded-xl border-4 border-sky-200" onClick={() => signIn('google')}>
+            <p className="text-xl">Sign In</p>
+        </button>
+      </div>
+    )
+  }
+
+}
