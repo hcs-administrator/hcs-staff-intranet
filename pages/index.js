@@ -72,7 +72,7 @@ export default function Home() {
               <p className="text-lg font-bold">{""}</p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit bg-orange-200">
+            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit ">
               {yl.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Your Links`}</h1> : null}
 
               {yl.map(bm => {
@@ -82,7 +82,7 @@ export default function Home() {
               })}
             </div>
 
-            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit bg-green-200">
+            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit ">
               {gl.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Google Links`}</h1> : null}
 
               {gl.map(bm => {
@@ -93,7 +93,7 @@ export default function Home() {
               })}
             </div>
 
-            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit bg-orange-200">
+            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit ">
               {ql.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Quick Links`}</h1> : null}
 
               {ql.map(bm => {
@@ -104,7 +104,7 @@ export default function Home() {
               })}
             </div>
 
-            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit bg-green-200">
+            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit ">
               {pd.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Professional Development`}</h1> : null}
 
               {pd.map(bm => {
@@ -114,7 +114,7 @@ export default function Home() {
               })}
             </div>
 
-            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit bg-orange-200">
+            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit ">
               {ss.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Support Sites`}</h1> : null} 
 
               {ss.map(bm => {
