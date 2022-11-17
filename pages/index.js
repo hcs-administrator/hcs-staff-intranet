@@ -3,7 +3,7 @@ import { useSession, signIn } from "next-auth/react"
 
 import ShowVerseOfTheDay from "../components/ShowVerseOfTheDay"
 import PapercutWidget from "../components/PapercutWidget"
-import { LinkButtonBlue, LinkButtonGreen, LinkButtonOrange, LinkButtonPurple } from "../components/LinkButton"
+import { LinkButtonLightBlue, LinkButtonBlue, LinkButtonGreen, LinkButtonOrange, LinkButtonPurple } from "../components/LinkButton"
 
 export default function Home() {
 
@@ -11,6 +11,7 @@ export default function Home() {
   const [id, setId] = useState("")
 
   const [ql, setQL] = useState([]) //Quick Links
+  const [gl, setGL] = useState([]) //Google Links
   const [pd, setPD] = useState([]) //Professional Development
   const [ss, setSS] = useState([]) //Support Sites
   const [yl, setYl] = useState([]) //Your Links
@@ -27,6 +28,7 @@ export default function Home() {
         let temp = data.data.map(d => ({attributes: {category: d.attributes.category, id: d.id, title: d.attributes.title, url: d.attributes.url }}))
 
         let ql1 = temp.filter(bm => bm.attributes.category === "QuickLinks")
+        let gl1 = temp.filter(bm => bm.attributes.category === "GoogleLinks")
         let pd1 = temp.filter(bm => bm.attributes.category === "ProfessionalDevelopment")
         let ss1 = temp.filter(bm => bm.attributes.category === "SupportLinks")
         let yl1 = temp.filter(bm => bm.attributes.category === "YourLinks")
@@ -40,6 +42,7 @@ export default function Home() {
           let temp = base.attributes.Links.map(b => ({attributes: {category: b.category, id: b.id, title: b.title, url: b.url}}))
 
           setQL(ql1.concat(temp.filter(bm => bm.attributes.category === "QuickLinks")))
+          setGL(gl1.concat(temp.filter(bm => bm.attributes.category === "GoogleLinks")))
           setPD(pd1.concat(temp.filter(bm => bm.attributes.category === "ProfessionalDevelopment")))
           setSS(ss1.concat(temp.filter(bm => bm.attributes.category === "SupportLinks")))
           setYl(yl1.concat(temp.filter(bm => bm.attributes.category === "YourLinks")))
@@ -53,7 +56,7 @@ export default function Home() {
 
   if (session) {
     return (
-      <div className="h-screen p-4 dark:bg-white dark:text-black">
+      <div className="h-full p-4 dark:bg-white dark:text-black">
         
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-3/4">
 
@@ -69,38 +72,57 @@ export default function Home() {
               <p className="text-lg font-bold">{""}</p>
             </div>
 
-            {yl.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Your Links`}</h1> : null}
+            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit bg-orange-200">
+              {yl.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Your Links`}</h1> : null}
 
-            {yl.map(bm => {
-              return (
-                <LinkButtonPurple key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
-              )
-            })}
+              {yl.map(bm => {
+                return (
+                  <LinkButtonPurple key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
+                )
+              })}
+            </div>
 
-            {ql.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Quick Links`}</h1> : null}
+            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit bg-green-200">
+              {gl.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Google Links`}</h1> : null}
 
-            {ql.map(bm => {
+              {gl.map(bm => {
 
-              return (
-                <LinkButtonBlue key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
-              )
-            })}
+                return (
+                  <LinkButtonLightBlue key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
+                )
+              })}
+            </div>
 
-            {pd.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Professional Development`}</h1> : null}
+            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit bg-orange-200">
+              {ql.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Quick Links`}</h1> : null}
 
-            {pd.map(bm => {
-              return (
-                <LinkButtonGreen key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
-              )
-            })}
+              {ql.map(bm => {
 
-            {ss.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Support Sites`}</h1> : null} 
+                return (
+                  <LinkButtonBlue key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
+                )
+              })}
+            </div>
 
-            {ss.map(bm => {
-              return (
-                <LinkButtonOrange key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
-              )
-            })}
+            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit bg-green-200">
+              {pd.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Professional Development`}</h1> : null}
+
+              {pd.map(bm => {
+                return (
+                  <LinkButtonGreen key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
+                )
+              })}
+            </div>
+
+            <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit bg-orange-200">
+              {ss.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Support Sites`}</h1> : null} 
+
+              {ss.map(bm => {
+                return (
+                  <LinkButtonOrange key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
+                )
+              })}
+            </div>
 
           </div>
 
