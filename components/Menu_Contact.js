@@ -12,9 +12,9 @@ export const MenuContacts = () => {
     if (session) {
       return (
         <div className="bg-orange-300 text-black w-full h-64 md:h-16 grid grid-cols-1 md:grid-cols-7 items-center">
-            <Link href="/contacts_dept"><a className="text-center text-black hover:text-orange-400 hover:bg-slate-200 text-md p-4">{"Departments"}</a></Link>
-            <Link href="/contacts_dept_full"><a className="text-center text-black hover:text-orange-400 hover:bg-slate-200 text-md p-4">{"Departments Full"}</a></Link>
-            <Link href="/contacts_staff"><a className="text-center text-black hover:text-orange-400 hover:bg-slate-200 text-md p-4">{"Staff List"}</a></Link>
+            <Link href="/contacts/departments"><a className="text-center text-black hover:text-orange-400 hover:bg-slate-200 text-md p-4">{"Departments"}</a></Link>
+            <Link href="/contacts/dept_full"><a className="text-center text-black hover:text-orange-400 hover:bg-slate-200 text-md p-4">{"Departments Full"}</a></Link>
+            <Link href="/contacts/stafflist"><a className="text-center text-black hover:text-orange-400 hover:bg-slate-200 text-md p-4">{"Staff List"}</a></Link>
         </div>
       )
     } else {

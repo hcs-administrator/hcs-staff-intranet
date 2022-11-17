@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react"
 
 import { gql, useQuery } from '@apollo/client';
 
-import {MenuContacts} from "../components/Menu_Contact"
+import { MenuContacts } from "../../components/Menu_Contact"
 
 const GET_STAFF = gql`
   query GET_STAFF {
