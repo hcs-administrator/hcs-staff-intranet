@@ -28,16 +28,18 @@ export const Menu = () => {
             </div>
 
           </div>
-          <div className="bg-red-900 w-full h-64 md:h-16 grid grid-cols-1 md:grid-cols-6 items-center">
-            <Link href="/"><a className="text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-4">{"Home"}</a></Link>
-            <Link href="/contacts/stafflist"><a className="text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-4">{"Contacts"}</a></Link>
-            <Link href="/howto"><a className="text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-4">{"How-To's"}</a></Link>
-            <Link href="/briefings"><a className="text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-4">{"Briefings"}</a></Link>
-            <Link href="/help"><a className="text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-4">{"Help"}</a></Link>
-            <button className="text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-4" onClick={() => signOut()}>
+
+          <div className="bg-red-900 w-full h-auto md:h-16 grid grid-cols-1 md:grid-cols-6 items-center">
+            <Link href="/"><a className="m-1 bg-red-400 md:bg-red-900 md:m-0 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4">{"Home"}</a></Link>
+            <Link href="/contacts/stafflist"><a className="m-1 bg-red-400 md:bg-red-900 md:m-0 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4">{"Contacts"}</a></Link>
+            <Link href="/howto"><a className="m-1 bg-red-400 md:bg-red-900 md:m-0 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4">{"How-To's"}</a></Link>
+            <Link href="/briefings"><a className="m-1 bg-red-400 md:bg-red-900 md:m-0 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4">{"Briefings"}</a></Link>
+            <Link href="/help"><a className="m-1 bg-red-400 md:bg-red-900 md:m-0 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4">{"Help"}</a></Link>
+            <button className="m-1 bg-red-400 md:bg-red-900 md:m-0 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4" onClick={() => signOut()}>
               <p className="text-xl">Sign Out</p>
             </button>
           </div>
+
         </div>
       )
     } else {
