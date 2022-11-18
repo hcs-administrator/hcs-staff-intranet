@@ -33,13 +33,13 @@ export default function Home() {
         let ss1 = temp.filter(bm => bm.attributes.category === "SupportLinks")
         let yl1 = temp.filter(bm => bm.attributes.category === "YourLinks")
 
-        fetch('https://hcs-intranet.jtek.lol/api/staff-users?populate=Links&fields[0]=email&filters[email][$eq]=jk@hcs.kiwi')
+        fetch(`https://hcs-intranet.jtek.lol/api/staff-users?populate=Links&fields[0]=email&filters[email][$eq]=${session.user.email}`)
         .then(res => res.json())
         .then(data => {
   
           let base = data.data[0]
-        
-          let temp = base.attributes.Links.map(b => ({attributes: {category: b.category, id: b.id, title: b.title, url: b.url}}))
+
+          let temp = base === undefined ? [] : base.attributes.Links.map(b => ({attributes: {category: b.category, id: b.id, title: b.title, url: b.url}}))
 
           setQL(ql1.concat(temp.filter(bm => bm.attributes.category === "QuickLinks")))
           setGL(gl1.concat(temp.filter(bm => bm.attributes.category === "GoogleLinks")))
@@ -66,11 +66,11 @@ export default function Home() {
 
             <PapercutWidget id={id} />
 
-            <div className="border-4 border-sky-900 rounded-2xl p-4 w-full">
+            {/* <div className="border-4 border-sky-900 rounded-2xl p-4 w-full">
               <h2 className="text-xl">{"Your Tickets:"}</h2>
               <p className="text-lg font-bold">{""}</p>
               <p className="text-lg font-bold">{""}</p>
-            </div>
+            </div> */}
 
             <div className="grid grid-cols-3 gap-4 p-4 col-span-1 md:col-span-3 max-w-fit ">
               {yl.length > 0 ? <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Your Links`}</h1> : null}
