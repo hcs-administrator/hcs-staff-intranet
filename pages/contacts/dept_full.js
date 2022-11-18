@@ -37,7 +37,8 @@ export default function Contacts() {
                 {departments.filter(d => d.name !== "Staff-Reliever").map((dept, i) => {
                     return (
                         <Fragment key={i}>
-                        <a className="text-sky-700 font-bold" href={`mailto:${dept.email}`}><h2 className="text-xl">{dept.name} - ({dept.staff.length})</h2></a>
+                        {/* <a className="text-sky-700 font-bold" href={`mailto:${dept.email}`}><h2 className="text-xl">{dept.name} - ({dept.staff.length})</h2></a> */}
+                        <a className="text-sky-700 font-bold" href={`https://mail.google.com/mail/?view=cm&fs=1&to=${dept.email}`} target="_blank" rel="noreferrer"><h2 className="text-xl">{dept.name} - ({dept.staff.length})</h2></a>
                         <ul>
                             {dept.staff.map((st, i) => {
                                 return (

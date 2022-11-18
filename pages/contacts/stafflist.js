@@ -34,7 +34,7 @@ export default function Contacts() {
             <div className="h-full p-4 dark:bg-white dark:text-black">
                 <h1 className="text-2xl pb-4 font-bold col-span-1 md:col-span-3">{`Contacts`}</h1>
                 <h2 className="text-2xl pb-4">Click on the staff name to email them</h2>
-                <table className="w-1/2 border-gray-300 border border-collapse">
+                <table className="w-full lg:w-1/2 border-gray-300 border border-collapse">
                     <thead className="border-gray-300 border">
                         <tr>
                             <th className="border-gray-300 border">Name</th>
@@ -47,7 +47,9 @@ export default function Contacts() {
                         <tr key={i}>
                             <td className="border-gray-300 border p-2">{`${st.firstname} ${st.lastname}`}</td>
                             <td className="border-gray-300 border p-2">{st.extension}</td>
-                            <td className="border-gray-300 border p-2">{st.email}</td>
+                            <td className="border-gray-300 border p-2">
+                            <a className="text-sky-700 font-bold" href={`https://mail.google.com/mail/?view=cm&fs=1&to=${st.email}`} target="_blank" rel="noreferrer"><span>{st.email}</span></a>
+                            </td>
                         </tr>
                     )
                 })}
