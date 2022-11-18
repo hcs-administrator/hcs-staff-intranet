@@ -19,7 +19,7 @@ function MyApp({
         <Component {...pageProps} />
       </ApolloProvider>
     </SessionProvider>
-  )
+  ) 
 }
 
 export default MyApp

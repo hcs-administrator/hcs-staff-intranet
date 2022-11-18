@@ -39,6 +39,7 @@ export default function Home() {
   
           let base = data.data[0]
 
+
           let temp = base === undefined ? [] : base.attributes.Links.map(b => ({attributes: {category: b.category, id: b.id, title: b.title, url: b.url}}))
 
           setQL(ql1.concat(temp.filter(bm => bm.attributes.category === "QuickLinks")))
