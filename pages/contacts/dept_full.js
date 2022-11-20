@@ -1,6 +1,8 @@
 import { Fragment, useState, useEffect, use } from 'react'
 import { useSession } from "next-auth/react"
 
+import Image from 'next/image'
+
 import { gql, useQuery } from '@apollo/client';
 
 import { MenuContacts } from "../../components/Menu_Contact"
@@ -37,12 +39,19 @@ export default function Contacts() {
                 {departments.filter(d => d.name !== "Staff-Reliever").map((dept, i) => {
                     return (
                         <Fragment key={i}>
-                        {/* <a className="text-sky-700 font-bold" href={`mailto:${dept.email}`}><h2 className="text-xl">{dept.name} - ({dept.staff.length})</h2></a> */}
-                        <a className="text-sky-700 font-bold" href={`https://mail.google.com/mail/?view=cm&fs=1&to=${dept.email}`} target="_blank" rel="noreferrer"><h2 className="text-xl">{dept.name} - ({dept.staff.length})</h2></a>
+                        <div className="grid col-span-3 grid-cols-mail gap-2 w-1/3 border border-gray-300 pl-2">
+                            <h2 className="text-sky-700 font-bold grid content-center text-xl">{dept.name} - ({dept.staff.length})</h2>
+                            <a className="w-1/2" href={`https://mail.google.com/mail/?view=cm&fs=1&to=${dept.email}`} target="_blank" rel="noreferrer">
+                                <Image src="/gmail.png" alt="cat" width={80} height={60} />    
+                            </a>
+                            <span className="w-1/2 cursor-pointer" onClick={() => navigator.clipboard.writeText(dept.email)}>
+                                <Image src="/copy.png" alt="cat" width={80} height={100} />
+                            </span>
+                        </div>
                         <ul>
                             {dept.staff.map((st, i) => {
                                 return (
-                                    <li key={i}>
+                                    <li key={i} className="grid col-span-3 grid-cols-mail w-1/3  border border-gray-300 pl-2">
                                         {`${st.firstname} ${st.lastname}`}
                                     </li>
                                 )

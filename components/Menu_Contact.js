@@ -11,7 +11,7 @@ export const MenuContacts = () => {
   
     if (session) {
       return (
-        <div className="bg-orange-300 text-black w-full h-auto md:h-16 grid grid-cols-1 md:grid-cols-7 items-center">
+        <div className="bg-orange-300 text-black w-full h-auto md:h-16 grid grid-cols-1 md:grid-cols-5 lg:grid-cols-7 items-center">
             <Link href="/contacts/departments"><a className="m-1 bg-orange-200 md:bg-orange-300 text-center text-black hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4">{"Departments"}</a></Link>
             <Link href="/contacts/dept_full"><a className="m-1 bg-orange-200 md:bg-orange-300 text-center text-black hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4">{"Departments Full"}</a></Link>
             <Link href="/contacts/stafflist"><a className="m-1 bg-orange-200 md:bg-orange-300 text-center text-black hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4">{"Staff List"}</a></Link>
