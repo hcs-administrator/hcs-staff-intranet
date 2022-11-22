@@ -12,6 +12,7 @@ module.exports = {
         'menu' : '1fr 4fr 1fr',
         'icon' : '50px 2fr 50px',
         'icon-md' : '50px 2fr 4fr',
+        'button' : '2fr 1fr'
       },
       gridTemplateRows: {
         'mobile-menu' : '0.3fr 0.3fr 4fr',

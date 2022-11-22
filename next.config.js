@@ -10,6 +10,6 @@ module.exports = {
   output: 'standalone',
   images: {
     unoptimized: true,
-    domains: ['placekitten.com'],
+    domains: ['hcs.net.nz'],
   },
 }

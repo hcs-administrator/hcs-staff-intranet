@@ -12,7 +12,7 @@ export const Menu = () => {
       return (
 
         <div>
-          <div className="grid grid-cols-icon md:grid-cols-icon-md pl-4 items-center w-full h-12 order-1 bg-hcs-blue">
+          <div className="grid grid-cols-icon md:grid-cols-icon-md pl-4 items-center w-full h-16 order-1 bg-hcs-blue">
             <Image className="py-4" src="/hcs_logo.png" alt="logo" width={35} height={40} />
             <h1 className="text-white text-2xl px-4 text-left">HCS Intranet</h1>
             <div className="hidden md:flex flex-row-reverse">
@@ -35,9 +35,23 @@ export const Menu = () => {
                   }}>{"Help"}</a></Link>
                 </div>
 
-                <div className="w-64 h-10 pl-6 pr-2">
-                  <button className="bg-hcs-blue-off px-2 text-sky-500 w-full rounded-xl border border-gray-400 h-10" onClick={() => signOut()}>
-                      <p className="text-white grid content-center">Hi {session.user.name.split(" ")[0]}<br/><span className='text-xs text-orange-300'>Click to sign out</span></p>
+                <div className="w-64 h-16 pl-6 pr-2">
+                  <button className="bg-hcs-blue-off mt-1 px-2 text-sky-500 w-full rounded-xl border border-gray-400 h-14" onClick={() => signOut()}>
+                      
+                    <div className="grid grid-cols-button h-16">
+                        <p className="text-white grid content-center">Hi {session.user.name.split(" ")[0]}</p>
+
+                        <div className="row-span-2 grid content-center -mt-2">
+                          <Image 
+                            src={`https://hcs.net.nz/photos/STAFF_PHOTOS/${session.user.email.split("@")[0].toUpperCase()}-S.jpg`} 
+                            alt={session.user.email.split("@")[0]} width={100} height={100} 
+                            className="rounded-full"
+                          />
+                        </div>
+
+                        <span className='text-xs text-orange-300'>Click to sign out</span>
+                    </div>
+
                   </button>
                 </div>
 
