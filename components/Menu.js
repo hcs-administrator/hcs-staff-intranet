@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from 'react'
+import { Fragment, useState, useEffect, useRef } from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
 
 import Image from 'next/image'
@@ -7,61 +7,95 @@ import Link from 'next/link'
 export const Menu = () => {
 
     const { data: session } = useSession()
-    //const [notices, setNotices] = useState([])
-  
+      
     if (session) {
       return (
+
         <div>
-          <div className="bg-sky-900 w-full h-24 px-4 flex flex-row items-center">
-            
-            <div className="flex flex-row items-center w-1/3">
-                <Image className="py-4" src="/hcs_logo.png" alt="logo" width={70} height={65} />
-                <h1 className="text-white text-3xl px-4">HCS Intranet</h1>
+          <div className="grid grid-cols-icon md:grid-cols-icon-md pl-4 items-center w-full h-12 order-1 bg-hcs-blue">
+            <Image className="py-4" src="/hcs_logo.png" alt="logo" width={35} height={40} />
+            <h1 className="text-white text-2xl px-4 text-left">HCS Intranet</h1>
+            <div className="hidden md:flex flex-row-reverse">
+
+                <div className="w-full h-12 md:h-auto grid md:grid-cols-5 items-center order-3">
+                  <Link href="/"><a className="m-1 bg-sky-600 md:bg-hcs-blue md:m-0 text-center text-white hover:text-white hover:bg-sky-800 text-md p-2 md:p-2" onClick={() => {
+                    document.querySelector('#mobileMenu').classList.toggle('hidden')
+                  }}>{"Home"}</a></Link>
+                          <Link href="/contacts/stafflist"><a className="m-1 bg-sky-600 md:bg-hcs-blue md:m-0 text-center text-white hover:text-white hover:bg-sky-800 text-md p-2 md:p-2" onClick={() => {
+                    document.querySelector('#mobileMenu').classList.toggle('hidden')
+                  }}>{"Contacts"}</a></Link>
+                          <Link href="/howto"><a className="m-1 bg-sky-600 md:bg-hcs-blue md:m-0 text-center text-white hover:text-white hover:bg-sky-800 text-md p-2 md:p-2" onClick={() => {
+                    document.querySelector('#mobileMenu').classList.toggle('hidden')
+                  }}>{"How-To's"}</a></Link>
+                          <Link href="/briefings"><a className="m-1 bg-sky-600 md:bg-hcs-blue md:m-0 text-center text-white hover:text-white hover:bg-sky-800 text-md p-2 md:p-2" onClick={() => {
+                    document.querySelector('#mobileMenu').classList.toggle('hidden')
+                  }}>{"Briefings"}</a></Link>
+                          <Link href="/help"><a className="m-1 bg-sky-600 md:bg-hcs-blue md:m-0 text-center text-white hover:text-white hover:bg-sky-800 text-md p-2 md:p-2" onClick={() => {
+                    document.querySelector('#mobileMenu').classList.toggle('hidden')
+                  }}>{"Help"}</a></Link>
+                </div>
+
+                <div className="w-64 h-10 pl-6 pr-2">
+                  <button className="bg-hcs-blue-off px-2 text-sky-500 w-full rounded-xl border border-gray-400 h-10" onClick={() => signOut()}>
+                      <p className="text-white grid content-center">Hi {session.user.name.split(" ")[0]}<br/><span className='text-xs text-orange-300'>Click to sign out</span></p>
+                  </button>
+                </div>
+
             </div>
-
-            <div className="flex flex-row text-white justify-end w-full pr-8">
-
-                <button className="bg-slate-400 p-2 text-white w-48 rounded-xl border-2 border-sky-200" onClick={() => signOut()}>
-                    <p className="text-xl">Signed in as<br/>{session.user.name}</p>
-                </button>
-
-            </div>
-
-          </div>
-
-          <div className="bg-red-900 w-full h-auto md:h-16 grid grid-cols-1 md:grid-cols-6 items-center">
-            <Link href="/"><a className="m-1 bg-red-400 md:bg-red-900 md:m-0 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4">{"Home"}</a></Link>
-            <Link href="/contacts/stafflist"><a className="m-1 bg-red-400 md:bg-red-900 md:m-0 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4">{"Contacts"}</a></Link>
-            <Link href="/howto"><a className="m-1 bg-red-400 md:bg-red-900 md:m-0 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4">{"How-To's"}</a></Link>
-            <Link href="/briefings"><a className="m-1 bg-red-400 md:bg-red-900 md:m-0 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4">{"Briefings"}</a></Link>
-            <Link href="/help"><a className="m-1 bg-red-400 md:bg-red-900 md:m-0 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4">{"Help"}</a></Link>
-            <button className="m-1 bg-red-400 md:bg-red-900 md:m-0 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-2 md:p-4" onClick={() => signOut()}>
-              <p className="text-xl">Sign Out</p>
+            <button id="menuButton" className="bg-hcs-blue w-full h-12 sm:h-12 px-4 grid md:hidden justify-center content-center text-2xl" onClick={() => {
+              document.querySelector('#mobileMenu').classList.toggle('hidden')
+              document.querySelector('#menuButton').innerHTML = document.querySelector('#menuButton').innerHTML == "x" ? "=" : "x"
+            }}>
+              <h1 className="text-white text-2xl px-4 text-left">=</h1>
             </button>
           </div>
 
+          
+          <div id="mobileMenu" className="hidden md:hidden">
+            <div className="h-auto bg-sky-900 grid grid-rows-mobile-menu px-2 pt-4">
+
+                <div className="w-full h-12 md:h-auto grid grid-cols-1 md:grid-cols-5 items-center order-3">
+                  <Link href="/"><a className="m-1 bg-sky-600 md:bg-hcs-blue md:m-0 text-center text-white hover:text-white hover:bg-sky-800 text-md p-2 md:p-2" onClick={() => {
+                    document.querySelector('#mobileMenu').classList.toggle('hidden')
+                  }}>{"Home"}</a></Link>
+                          <Link href="/contacts/stafflist"><a className="m-1 bg-sky-600 md:bg-hcs-blue md:m-0 text-center text-white hover:text-white hover:bg-sky-800 text-md p-2 md:p-2" onClick={() => {
+                    document.querySelector('#mobileMenu').classList.toggle('hidden')
+                  }}>{"Contacts"}</a></Link>
+                          <Link href="/howto"><a className="m-1 bg-sky-600 md:bg-hcs-blue md:m-0 text-center text-white hover:text-white hover:bg-sky-800 text-md p-2 md:p-2" onClick={() => {
+                    document.querySelector('#mobileMenu').classList.toggle('hidden')
+                  }}>{"How-To's"}</a></Link>
+                          <Link href="/briefings"><a className="m-1 bg-sky-600 md:bg-hcs-blue md:m-0 text-center text-white hover:text-white hover:bg-sky-800 text-md p-2 md:p-2" onClick={() => {
+                    document.querySelector('#mobileMenu').classList.toggle('hidden')
+                  }}>{"Briefings"}</a></Link>
+                          <Link href="/help"><a className="m-1 bg-sky-600 md:bg-hcs-blue md:m-0 text-center text-white hover:text-white hover:bg-sky-800 text-md p-2 md:p-2" onClick={() => {
+                    document.querySelector('#mobileMenu').classList.toggle('hidden')
+                  }}>{"Help"}</a></Link>
+                </div>
+
+                <div className="w-full h-14">
+                  <button className="bg-hcs-blue px-2 mt-1 text-sky-500 w-full rounded-xl border border-sky-500 h-12" onClick={() => signOut()}>
+                      <p className="text-white grid content-center">Hi {session.user.name.split(" ")[0]}<br/><span className='text-xs text-orange-300'>Click to sign out</span></p>
+                  </button>
+                </div>
+
+            </div>
+          </div>
+
         </div>
+
       )
     } else {
         return (
             <div>
-              <div className="bg-sky-900 w-full h-24 px-4 flex flex-row items-center">
+              <div className="grid pl-4 items-center w-full h-12 order-1 bg-hcs-blue">
                 
-                <div className="flex flex-row items-center w-1/3">
-                    <Image className="py-4" src="/hcs_logo.png" alt="logo" width={70} height={65} />
-                    <h1 className="text-white text-3xl px-4">HCS Intranet</h1>
-                </div>
-
-                <div className="flex flex-row text-white justify-end w-full pr-8">
-
-                    <button className="bg-slate-400 p-4 text-white w-48 rounded-xl border-4 border-sky-200" onClick={() => signIn('google')}>
-                        <p className="text-xl">Sign In</p>
-                    </button>
-
+                <div className="grid grid-cols-icon items-center w-full h-12 order-1">
+                  <Image className="py-4" src="/hcs_logo.png" alt="logo" width={35} height={40} />
+                  <h1 className="text-white text-2xl px-4">HCS Intranet</h1>
                 </div>
     
               </div>
-              <div className="bg-red-900 w-full h-12 px-4 flex items-center" />
+              <div className="bg-hcs-red w-full h-6 px-4 flex items-center" />
             </div>
         )
     }

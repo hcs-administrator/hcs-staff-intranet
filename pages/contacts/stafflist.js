@@ -46,7 +46,7 @@ export default function Contacts() {
                             <span className="border-gray-300 border p-2 col-span-1 md:col-span-1">{`${st.firstname} ${st.lastname}`}</span>
                             <span className="border-gray-300 border p-2 col-span-1 md:col-span-1">{st.extension}</span>
                             <span className="border-gray-300 border p-2 col-span-2 md:col-span-1">
-                            <a className="text-sky-700 font-bold" href={`https://mail.google.com/mail/?view=cm&fs=1&to=${st.email}`} target="_blank" rel="noreferrer"><span>{st.email}</span></a>
+                            <a className="text-sky-700 font-bold text-xxs md:text-base" href={`https://mail.google.com/mail/?view=cm&fs=1&to=${st.email}`} target="_blank" rel="noreferrer"><span>{st.email}</span></a>
                             </span>
                         </p>
                     )

@@ -132,11 +132,13 @@ export default function Home() {
   } else {
     return (
       <div className="h-screen p-4 dark:bg-white dark:text-black">
-        <h2 className="text-2xl">You have reached the HCS Staff Intranet Site</h2>
 
-        <p className="mb-4">You will need to sign in with your school google account to see your content.</p>
+        <div className="pb-6">
+          <h2 className="text-2xl">You have reached the HCS Staff Intranet Site</h2>
+          <p className="mb-4">You will need to sign in with your school google account to see your content.</p>
+        </div>
 
-        <button className="bg-slate-400 p-4 text-white w-64 rounded-xl border-4 border-sky-200" onClick={() => signIn('google')}>
+        <button className="bg-sky-700 p-4 text-white w-full md:w-1/3 rounded-xl border-4 border-hcs-blue" onClick={() => signIn('google')}>
             <p className="text-xl">Sign In</p>
         </button>
       </div>

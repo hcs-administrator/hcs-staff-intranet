@@ -16,13 +16,13 @@ export default function HowTo() {
 
             <div className="w-full lg:w-1/2 grid grid-cols-1 gap-6">
                 <Link href="https://hamiltonchristianschool.atlassian.net/servicedesk/customer/portal/2/group/2/create/10002">
-                    <a target="_blank" rel="noreferrer" className="bg-sky-800 w-full md:w-1/3 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-4">{"Help ( IT )"}</a>
+                    <a target="_blank" rel="noreferrer" className="bg-sky-800 w-full md:w-1/3 text-center text-white hover:text-white hover:bg-gray-500 text-md p-4">{"Help ( IT )"}</a>
                 </Link>
                 <Link href="https://hamiltonchristianschool.atlassian.net/servicedesk/customer/portal/2/group/2/create/10029">
-                    <a target="_blank" rel="noreferrer" className="bg-sky-800 w-full md:w-1/3 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-4">{"Help ( Maintenance )"}</a>
+                    <a target="_blank" rel="noreferrer" className="bg-sky-800 w-full md:w-1/3 text-center text-white hover:text-white hover:bg-gray-500 text-md p-4">{"Help ( Maintenance )"}</a>
                 </Link>
                 <Link href="https://hamiltonchristianschool.atlassian.net/servicedesk/customer/portal/2/group/2/create/10002">
-                    <a target="_blank" rel="noreferrer" className="bg-sky-800 w-full md:w-1/3 text-center text-white hover:text-orange-400 hover:bg-slate-200 text-md p-4">{"Help ( Hazzard )"}</a>
+                    <a target="_blank" rel="noreferrer" className="bg-sky-800 w-full md:w-1/3 text-center text-white hover:text-white hover:bg-gray-500 text-md p-4">{"Help ( Hazzard )"}</a>
                 </Link>
             </div>
 

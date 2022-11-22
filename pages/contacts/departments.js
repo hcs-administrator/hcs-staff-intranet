@@ -39,8 +39,8 @@ export default function Contacts() {
                 {departments.filter(d => d.name !== "Staff-Reliever").map((dept, i) => {
                     return (
                         <Fragment key={i}>
-                            <div className="grid col-span-3 grid-cols-mail gap-2 w-1/3 border border-gray-300 pl-2">
-                                <h2 className="text-sky-700 font-bold grid content-center text-xl">{dept.name} - ({dept.staff.length})</h2>
+                            <div className="grid col-span-3 grid-cols-mail gap-2 w-full md:w-1/3 border border-gray-300 pl-2">
+                                <h2 className="text-sky-700 font-bold grid content-center text-base tmd:text-xl">{dept.name} - ({dept.staff.length})</h2>
                                 <a className="w-1/2" href={`https://mail.google.com/mail/?view=cm&fs=1&to=${dept.email}`} target="_blank" rel="noreferrer">
                                     <Image src="/gmail.png" alt="cat" width={80} height={60} />    
                                 </a>
