@@ -3,7 +3,7 @@ import { useSession, signIn } from "next-auth/react"
 
 import ShowVerseOfTheDay from "../components/ShowVerseOfTheDay"
 import PapercutWidget from "../components/PapercutWidget"
-import { LinkButtonLightBlue, LinkButtonBlue, LinkButtonGreen, LinkButtonOrange, LinkButtonPurple } from "../components/LinkButton"
+import { LinkButtonLightBlue, LinkButtonBlue, LinkButtonGreen, LinkButtonOrange, LinkButtonTop } from "../components/LinkButton"
 
 export default function Home() {
 
@@ -78,7 +78,7 @@ export default function Home() {
 
               {yl.map(bm => {
                 return (
-                  <LinkButtonPurple key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
+                  <LinkButtonTop key={bm.attributes.id} link={bm.attributes.url} name={bm.attributes.title} />
                 )
               })}
             </div>

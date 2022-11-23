@@ -31,9 +31,9 @@ export const LinkButtonOrange = ({link, name}) => {
     );
 }
 
-export const LinkButtonPurple = ({link, name}) => {
+export const LinkButtonTop = ({link, name}) => {
     return (
-        <div className="border-4 border-purple-900 rounded-2xl p-4 w-full bg-purple-600">
+        <div className="border-4 border-gray-800 rounded-2xl p-4 w-full bg-slate-400">
             <a href={link} target="_blank" rel="noreferrer" className="flex text-2xl justify-center text-white" >{name}</a>
         </div>
     );
