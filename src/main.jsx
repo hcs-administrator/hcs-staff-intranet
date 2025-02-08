@@ -12,6 +12,8 @@ import PopoutLayout from './layouts/PopoutLayout';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import StaffPhotosViewPage from './pages/StaffPhotosViewPage'
+import LinksPage from './pages/LinksPage';
+import PhoneExtensionsPage from './pages/PhoneExtensionsPage';
 
 //Router
 const router = createBrowserRouter(
@@ -21,6 +23,8 @@ const router = createBrowserRouter(
         <Route index element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/staff-photos" element={<StaffPhotosViewPage />} />
+        <Route path="/links" element={<LinksPage />} />
+        <Route path="/voip-extensions" element={<PhoneExtensionsPage />} />
       </Route>
       <Route element={<PopoutLayout />} >
         <Route path="/staff-photos-web" element={<StaffPhotosViewPage />} />

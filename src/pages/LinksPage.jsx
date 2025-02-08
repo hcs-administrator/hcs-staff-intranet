@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import ReactMarkdown from 'react-markdown'
-import MarkDownFile from '../../docs/_posts/static/home-page.md';
+import MarkDownFile from '../../docs/_posts/static/links.md';
 import axios from 'axios'
 
-const HomePage = () => {
+const LinksPage = () => {
 
     const [content, setContent] = useState("")
 
@@ -21,4 +21,4 @@ const HomePage = () => {
     return <div className="p-4"><ReactMarkdown children={content} /></div>
   }
   
-  export default HomePage
+  export default LinksPage

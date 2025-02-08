@@ -37,7 +37,7 @@ const SideBar = ({className, user}) => {
 
     return (
         <div className={className}>
-            <ul className="py-4">
+            <ul className="sidebar-ul">
 
             {listItems.filter(item => {
 
@@ -53,12 +53,12 @@ const SideBar = ({className, user}) => {
                 return (
                     <li key={item.Id} className="px-4 py-2 hover:bg-slate-500 hover:cursor-pointer">
                         {item.isExternal ? 
-                            <a href={item.link} target="_blank" rel="noreferrer" className="text-white text-xl flex flex-row items-center">
+                            <a className="sidebar-links" href={item.link} target="_blank" rel="noreferrer">
                                 <span className="pr-2">{item[`Role Name`]}</span>
                                 <HiOutlineExternalLink />
                             </a>
                         :
-                            <NavLink to={item.link} className="text-white text-xl">
+                            <NavLink to={item.link} className="sidebar-links">
                                 {item[`Role Name`]}
                             </NavLink>
                         }

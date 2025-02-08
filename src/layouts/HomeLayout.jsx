@@ -16,19 +16,19 @@ export default function Dashboard() {
 
         const getData = async () => {
     
-            await axios({
+            // await axios({
 
-                method: 'get',
-                url: `${import.meta.env.VITE_NOCO_URL}/api/v1/db/data/v1/Staff/Staff/find-one?fields=EID,FirstName&where=(EID,eq,JK)`,
-                headers : {
-                'xc-token': import.meta.env.VITE_NOCO_TOKEN,
-                }
+            //     method: 'get',
+            //     url: `${import.meta.env.VITE_NOCO_URL}/api/v1/db/data/v1/Staff/Staff/find-one?fields=EID,FirstName&where=(EID,eq,JK)`,
+            //     headers : {
+            //     'xc-token': import.meta.env.VITE_NOCO_TOKEN,
+            //     }
 
-            }).then(async resp => {
+            // }).then(async resp => {
 
-                setDetails(resp.data)
+            //     setDetails(resp.data)
 
-            })
+            // })
 
         }
         
