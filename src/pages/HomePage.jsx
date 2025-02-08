@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react"
 import ReactMarkdown from 'react-markdown'
 import MarkDownFile from '../../docs/_posts/static/home-page.md';
-import { useEffect, useState } from "react"
 import axios from 'axios'
 
 const HomePage = () => {
@@ -18,9 +18,7 @@ const HomePage = () => {
 
     })
 
-    return (
-        <ReactMarkdown children={content} />
-    )
+    return <ReactMarkdown children={content} />
   }
   
   export default HomePage

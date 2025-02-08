@@ -9,6 +9,7 @@ import HomeLayout from './layouts/HomeLayout';
 
 //Pages
 import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
 
 //Router
 const router = createBrowserRouter(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
     <>
       <Route element={<HomeLayout />} >
         <Route index element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Route>
     </>
   )
