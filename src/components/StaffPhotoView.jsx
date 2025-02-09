@@ -59,7 +59,7 @@ const StaffPhotoView = () => {
             }).map(staff => {
               return (
                 <div key={staff.EID} className="px-2 flex flex-col items-center sm:items-start md:items-start">
-                  <img src={staff.hasPhoto ? `${import.meta.env.VITE_PHOTO_URL}/photos/${staff.EID}-R.jpg` : `${import.meta.env.VITE_PHOTO_URL}/photos/no-photo.jpg`} alt="photo" className="w-2/3"/>
+                  <img src={staff.hasPhoto ? `${import.meta.env.VITE_STATIC_URL}/photos/${staff.EID}-R.jpg` : `${import.meta.env.VITE_STATIC_URL}/photos/no-photo.jpg`} alt="photo" className="w-2/3"/>
                   <h2 className="font-bold">{`${staff.FirstName} ${staff.LastName}`}</h2>
                   {staff.Role1 === "" ? <br /> : <p>{`${staff.Role1}`}</p>}
                   {staff.Role2 === "" ? <br /> : staff.Role2 === null ? staff.Role1 === "Teacher" ? `Year ${staff.Year}` : <br /> : <p>{`${staff.Role2}`}</p>}
