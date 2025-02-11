@@ -16,8 +16,6 @@ const PhoneExtensions = () => {
             })
             .then(async resp => {
 
-                console.log(resp.data)
-
                 setList(resp.data)
             })
             .catch(err => err)
