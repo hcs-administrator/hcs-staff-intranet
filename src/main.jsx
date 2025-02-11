@@ -14,6 +14,7 @@ import LoginPage from './pages/LoginPage';
 import StaffPhotosViewPage from './pages/StaffPhotosViewPage'
 import LinksPage from './pages/LinksPage';
 import PhoneExtensionsPage from './pages/PhoneExtensionsPage';
+import MePage from './pages/MePage';
 
 //Router
 const router = createBrowserRouter(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
         <Route path="/staff-photos" element={<StaffPhotosViewPage />} />
         <Route path="/links" element={<LinksPage />} />
         <Route path="/voip-extensions" element={<PhoneExtensionsPage />} />
+        <Route path="/me" element={<MePage />} />
       </Route>
       <Route element={<PopoutLayout />} >
         <Route path="/staff-photos-web" element={<StaffPhotosViewPage />} />
