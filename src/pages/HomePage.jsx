@@ -19,6 +19,6 @@ const HomePage = () => {
     })
 
     return <div className="p-4"><ReactMarkdown children={content} /></div>
-  }
+}
   
-  export default HomePage
+export default HomePage
