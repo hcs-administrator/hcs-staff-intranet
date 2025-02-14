@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => {
     server: {
       host: true,
       port: env.VITE_PORT,
-      allowedHosts: env.VITE_ALLOWED_HOSTS
+      allowedHosts: [env.VITE_ALLOWED_HOSTS]
     },
     assetsInclude: ['**/*.md']
   }
