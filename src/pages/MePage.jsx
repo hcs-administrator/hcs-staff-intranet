@@ -47,14 +47,12 @@ const Me = () => {
 
         }}
 
-        //`${process.env.VITE_STATIC_URL}/signatures/main/index.html?token=${localStorage.getItem('token')}&eid=${user.EID}`
-        //`${process.env.VITE_STATIC_URL}/signatures/reply/index.html?token=${localStorage.getItem('token')}&eid=${user.EID}`
-
         getData()
     }, [])
 
     return (
-        <div className="col-span-4 col-start-5 grid grid-cols-10" >
+        (Object.keys('user').length > 0) ? 
+            <div className="col-span-4 col-start-5 grid grid-cols-10" >
             <div className="col-start-1 col-span-7 space-y-2">
                 
                 <h1>{`Welcome ${user.FirstName}!`}</h1>
@@ -82,6 +80,7 @@ const Me = () => {
                 <Profile_Photo details={user} />
             </div>
         </div>
+        : <div></div>
     )
 }
 

@@ -28,7 +28,7 @@ const Profile_Papercut = ({details}) => {
       getData()
     }
 
-  })
+  }, [])
 
   return (
     <div className="flex flex-col">
